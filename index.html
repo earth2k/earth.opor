@@ -6,9 +6,6 @@
 <title>1 Year Anniversary 💙</title>
 
 <style>
-/* ===============================
-   โค้ดเดิมของน้อง (ไม่แก้)
-================================ */
 :root{
   --bg1:#eef4ff;
   --bg2:#dbe8ff;
@@ -16,11 +13,21 @@
   --deep:#4f5b82;
 }
 *{box-sizing:border-box;font-family:"Segoe UI",system-ui,sans-serif;}
-body{
-  margin:0;min-height:100vh;
-  background:linear-gradient(135deg,var(--bg1),var(--bg2),var(--bg3));
-  overflow:hidden;
+
+html,body{
+  margin:0;
+  width:100%;
+  height:100%;
+  overflow-x:hidden;
+  overscroll-behavior:none;
 }
+
+body{
+  min-height:100dvh;
+  background:linear-gradient(135deg,var(--bg1),var(--bg2),var(--bg3));
+}
+
+/* ---------- Gate ---------- */
 .gate{
   position:fixed;inset:0;
   display:flex;align-items:center;justify-content:center;
@@ -30,9 +37,10 @@ body{
   transition:.8s ease;
 }
 .gate.show{opacity:1;pointer-events:auto;}
+
 .gate-card{
   width:340px;
-  min-height:520px;
+  min-height:360px;
   background:rgba(255,255,255,.25);
   backdrop-filter:blur(28px);
   padding:40px 30px;
@@ -41,33 +49,28 @@ body{
   color:#fff;
   box-shadow:0 40px 120px rgba(0,0,0,.25);
 }
-.gate-card button{
-  margin-top:24px;
-  padding:16px 0;
-  width:100%;
-  border:none;
-  border-radius:40px;
-  font-size:18px;
-  cursor:pointer;
-}
+
+/* ---------- Password ---------- */
 #passDisplay{margin:16px 0;font-size:26px;letter-spacing:6px;}
 .keypad{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
 .keypad button{
   padding:18px 0;font-size:20px;border:none;border-radius:16px;
-  background:rgba(255,255,255,.85);
+  background:rgba(255,255,255,.9);
 }
 .keypad button:active{transform:scale(.95);}
+
+/* ---------- Background ---------- */
 .glow{
   position:fixed;width:520px;height:520px;
   background:radial-gradient(circle,rgba(160,190,255,.65),transparent 70%);
   filter:blur(90px);
-  animation:move 26s infinite alternate ease-in-out;
   z-index:0;
 }
 .g1{top:-220px;left:-200px;}
-.g2{bottom:-240px;right:-200px;animation-delay:6s;}
-@keyframes move{to{transform:translateY(160px);}}
+.g2{bottom:-240px;right:-200px;}
+
 .bg{position:fixed;inset:0;pointer-events:none;z-index:1;}
+
 .float-img{
   position:absolute;bottom:-80px;width:30px;height:30px;
   border-radius:50%;object-fit:cover;opacity:.85;
@@ -82,22 +85,37 @@ body{
   20%{opacity:1;}
   to{transform:translateY(-120vh) scale(1.15);opacity:0;}
 }
+
+/* ---------- Main ---------- */
 .main{
-  position:relative;z-index:10;min-height:100vh;
+  position:relative;z-index:10;
+  min-height:100dvh;
   display:flex;align-items:center;justify-content:center;
   opacity:0;transition:1s ease;
 }
 .main.show{opacity:1;}
+
 .card{
-  max-width:460px;background:rgba(235,245,255,.9);
-  border-radius:54px;padding:52px 36px;text-align:center;
+  max-width:460px;
+  background:rgba(235,245,255,.95);
+  border-radius:54px;
+  padding:52px 36px;
+  text-align:center;
 }
+
+/* ---------- Photo ---------- */
 .photo-wrap{width:200px;height:200px;margin:0 auto 28px;}
 .photo{
-  width:100%;height:100%;border-radius:50%;
+  width:100%;height:100%;
+  border-radius:50%;
   overflow:hidden;border:7px solid #fff;
+  box-shadow:
+    0 0 40px rgba(159,196,255,.8),
+    0 0 80px rgba(177,156,255,.6);
 }
 .photo img{width:100%;height:100%;object-fit:cover;}
+
+/* ---------- Text ---------- */
 h2{font-size:32px;color:var(--deep);}
 .names{font-size:19px;color:#6a78a0;}
 .badge{
@@ -110,93 +128,28 @@ h2{font-size:32px;color:var(--deep);}
   margin-top:22px;padding:18px 20px;border-radius:20px;
   background:#f1f6ff;color:#4f5f88;
 }
-@media (min-width:768px){
-  .gate-card{width:380px;}
-  .card{max-width:520px;}
-}
 
-/* ===============================
-   ADD ONLY : ปรับหน้าเปิดสิให้สั้นลง
-================================ */
-#openPage .gate-card{
-  min-height:360px;
-}
-
-/* ===============================
-   ADD ONLY : ตกแต่งอลังการขั้นสุด
-================================ */
-
-/* พื้นหลังจักรวาล */
-body::before{
-  content:"";
-  position:fixed;inset:-20%;
-  background:
-    radial-gradient(circle at 20% 30%, #ffffff55, transparent 40%),
-    radial-gradient(circle at 80% 20%, #9fc4ff55, transparent 45%),
-    radial-gradient(circle at 50% 80%, #b19cff55, transparent 45%);
-  filter:blur(80px);
-  animation:bgFloat 30s ease-in-out infinite alternate;
-  z-index:-2;
-}
-@keyframes bgFloat{to{transform:translateY(-120px);}}
-
-/* ดาวระยิบ */
-body::after{
-  content:"";
-  position:fixed;inset:0;
-  background-image:radial-gradient(#ffffff88 1px, transparent 1px);
-  background-size:120px 120px;
-  opacity:.15;
-  animation:twinkle 8s linear infinite;
-  pointer-events:none;
-  z-index:-1;
-}
-@keyframes twinkle{
-  from{background-position:0 0;}
-  to{background-position:120px 120px;}
-}
-
-/* การ์ดลอย */
-.gate-card,.card{
-  position:relative;
-  animation:floatCard 6s ease-in-out infinite;
-}
-@keyframes floatCard{
-  0%,100%{transform:translateY(0);}
-  50%{transform:translateY(-6px);}
-}
-
-/* ขอบพลัง */
-.gate-card::after,.card::after{
-  content:"";
-  position:absolute;inset:-3px;
-  border-radius:inherit;
-  background:conic-gradient(
-    from 0deg,#ffffff88,#9fc4ffcc,#b19cffcc,#ffffff88
-  );
-  animation:spinGlow 8s linear infinite;
-  filter:blur(14px);
-  opacity:.55;
-  z-index:-2;
-}
-@keyframes spinGlow{to{transform:rotate(360deg);}}
-
-/* ปุ่มพรีเมียม */
+/* ---------- Premium Button ---------- */
 button{
   background:linear-gradient(135deg,#ffffff,#e8f0ff);
   box-shadow:0 10px 30px rgba(0,0,0,.25);
-  transition:.35s ease;
+  transition:.3s ease;
+  cursor:pointer;
+  border:none;
+  border-radius:40px;
+  padding:16px 0;
+  width:100%;
 }
 button:hover{
   transform:translateY(-2px) scale(1.03);
   box-shadow:0 20px 50px rgba(0,0,0,.35);
 }
 
-/* รูปมีออร่า */
-.photo{
-  box-shadow:
-    0 0 40px rgba(159,196,255,.8),
-    0 0 80px rgba(177,156,255,.6);
+/* ---------- ปิดการขยับทั้งหมด (นิ่งสนิท) ---------- */
+.gate-card,.card,
+body::before,body::after{
+  animation:none !important;
+  transform:none !important;
 }
 </style>
 </head>
@@ -207,7 +160,7 @@ button:hover{
 
 <div id="openPage" class="gate show">
   <div class="gate-card">
-    <h1>สำหรับน้องโอปอนะจ๊ะะ 💙</h1>
+    <h1>สำหรับน้องโอปอนะจ๊ะ 💙</h1>
     <button onclick="goPassword()">✨ เปิดเร็วเด็กก</button>
   </div>
 </div>
@@ -247,7 +200,7 @@ button:hover{
     <div class="names">เอิร์ท 🤍 น้องโอปอ</div>
     <div class="badge">1Y • 08/02/25</div>
     <div id="loveTime"></div>
-    <div class="message">เค้ารักเธอนะคับเด็กก จะรักตลอดไปเลยย เลิกกันเค้าก็จะร้ากกกก 💙</div>
+    <div class="message">เค้ารักเธอนะคับเด็กก จะรักตลอดไปเลยย เลิกแล้วเค้าก็ร้ากก 💙</div>
   </div>
 </div>
 
