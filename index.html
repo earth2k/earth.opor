@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1 Year Anniversary 💙</title>
+
+<style>
+/* ===============================
+   โค้ดเดิมของน้อง (ไม่แก้)
+================================ */
+:root{
+  --bg1:#eef4ff;
+  --bg2:#dbe8ff;
+  --bg3:#e3dcff;
+  --deep:#4f5b82;
+}
+*{box-sizing:border-box;font-family:"Segoe UI",system-ui,sans-serif;}
+body{
+  margin:0;min-height:100vh;
+  background:linear-gradient(135deg,var(--bg1),var(--bg2),var(--bg3));
+  overflow:hidden;
+}
+.gate{
+  position:fixed;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,#9fc4ff,#b19cff);
+  z-index:100;
+  opacity:0;pointer-events:none;
+  transition:.8s ease;
+}
+.gate.show{opacity:1;pointer-events:auto;}
+.gate-card{
+  width:340px;
+  min-height:520px;
+  background:rgba(255,255,255,.25);
+  backdrop-filter:blur(28px);
+  padding:40px 30px;
+  border-radius:50px;
+  text-align:center;
+  color:#fff;
+  box-shadow:0 40px 120px rgba(0,0,0,.25);
+}
+.gate-card button{
+  margin-top:24px;
+  padding:16px 0;
+  width:100%;
+  border:none;
+  border-radius:40px;
+  font-size:18px;
+  cursor:pointer;
+}
+#passDisplay{margin:16px 0;font-size:26px;letter-spacing:6px;}
+.keypad{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.keypad button{
+  padding:18px 0;font-size:20px;border:none;border-radius:16px;
+  background:rgba(255,255,255,.85);
+}
+.keypad button:active{transform:scale(.95);}
+.glow{
+  position:fixed;width:520px;height:520px;
+  background:radial-gradient(circle,rgba(160,190,255,.65),transparent 70%);
+  filter:blur(90px);
+  animation:move 26s infinite alternate ease-in-out;
+  z-index:0;
+}
+.g1{top:-220px;left:-200px;}
+.g2{bottom:-240px;right:-200px;animation-delay:6s;}
+@keyframes move{to{transform:translateY(160px);}}
+.bg{position:fixed;inset:0;pointer-events:none;z-index:1;}
+.float-img{
+  position:absolute;bottom:-80px;width:30px;height:30px;
+  border-radius:50%;object-fit:cover;opacity:.85;
+  animation:rise linear forwards;
+}
+.floating{
+  position:absolute;bottom:-60px;font-size:18px;
+  opacity:.7;animation:rise linear forwards;
+}
+@keyframes rise{
+  from{transform:translateY(0) scale(.9);opacity:0;}
+  20%{opacity:1;}
+  to{transform:translateY(-120vh) scale(1.15);opacity:0;}
+}
+.main{
+  position:relative;z-index:10;min-height:100vh;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;transition:1s ease;
+}
+.main.show{opacity:1;}
+.card{
+  max-width:460px;background:rgba(235,245,255,.9);
+  border-radius:54px;padding:52px 36px;text-align:center;
+}
+.photo-wrap{width:200px;height:200px;margin:0 auto 28px;}
+.photo{
+  width:100%;height:100%;border-radius:50%;
+  overflow:hidden;border:7px solid #fff;
+}
+.photo img{width:100%;height:100%;object-fit:cover;}
+h2{font-size:32px;color:var(--deep);}
+.names{font-size:19px;color:#6a78a0;}
+.badge{
+  margin-top:16px;padding:12px 28px;border-radius:30px;
+  background:linear-gradient(135deg,#9fc4ff,#b19cff);
+  color:#fff;
+}
+#loveTime{margin-top:18px;font-size:14px;color:#5a6a8f;}
+.message{
+  margin-top:22px;padding:18px 20px;border-radius:20px;
+  background:#f1f6ff;color:#4f5f88;
+}
+@media (min-width:768px){
+  .gate-card{width:380px;}
+  .card{max-width:520px;}
+}
+
+/* ===============================
+   ADD ONLY : ปรับหน้าเปิดสิให้สั้นลง
+================================ */
+#openPage .gate-card{
+  min-height:360px;
+}
+
+/* ===============================
+   ADD ONLY : ตกแต่งอลังการขั้นสุด
+================================ */
+
+/* พื้นหลังจักรวาล */
+body::before{
+  content:"";
+  position:fixed;inset:-20%;
+  background:
+    radial-gradient(circle at 20% 30%, #ffffff55, transparent 40%),
+    radial-gradient(circle at 80% 20%, #9fc4ff55, transparent 45%),
+    radial-gradient(circle at 50% 80%, #b19cff55, transparent 45%);
+  filter:blur(80px);
+  animation:bgFloat 30s ease-in-out infinite alternate;
+  z-index:-2;
+}
+@keyframes bgFloat{to{transform:translateY(-120px);}}
+
+/* ดาวระยิบ */
+body::after{
+  content:"";
+  position:fixed;inset:0;
+  background-image:radial-gradient(#ffffff88 1px, transparent 1px);
+  background-size:120px 120px;
+  opacity:.15;
+  animation:twinkle 8s linear infinite;
+  pointer-events:none;
+  z-index:-1;
+}
+@keyframes twinkle{
+  from{background-position:0 0;}
+  to{background-position:120px 120px;}
+}
+
+/* การ์ดลอย */
+.gate-card,.card{
+  position:relative;
+  animation:floatCard 6s ease-in-out infinite;
+}
+@keyframes floatCard{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-6px);}
+}
+
+/* ขอบพลัง */
+.gate-card::after,.card::after{
+  content:"";
+  position:absolute;inset:-3px;
+  border-radius:inherit;
+  background:conic-gradient(
+    from 0deg,#ffffff88,#9fc4ffcc,#b19cffcc,#ffffff88
+  );
+  animation:spinGlow 8s linear infinite;
+  filter:blur(14px);
+  opacity:.55;
+  z-index:-2;
+}
+@keyframes spinGlow{to{transform:rotate(360deg);}}
+
+/* ปุ่มพรีเมียม */
+button{
+  background:linear-gradient(135deg,#ffffff,#e8f0ff);
+  box-shadow:0 10px 30px rgba(0,0,0,.25);
+  transition:.35s ease;
+}
+button:hover{
+  transform:translateY(-2px) scale(1.03);
+  box-shadow:0 20px 50px rgba(0,0,0,.35);
+}
+
+/* รูปมีออร่า */
+.photo{
+  box-shadow:
+    0 0 40px rgba(159,196,255,.8),
+    0 0 80px rgba(177,156,255,.6);
+}
+</style>
+</head>
+
+<body>
+
+<audio id="beep"><source src="beep.mp3"></audio>
+
+<div id="openPage" class="gate show">
+  <div class="gate-card">
+    <h1>สำหรับน้องโอปอนะจ๊ะะ 💙</h1>
+    <button onclick="goPassword()">✨ เปิดเร็วเด็กก</button>
+  </div>
+</div>
+
+<div id="passwordPage" class="gate">
+  <div class="gate-card">
+    <h2>ใส่รหัสลับ 💙</h2>
+    <div id="passDisplay">○ ○ ○ ○ ○ ○</div>
+    <div class="keypad">
+      <button onclick="addNum('1')">1</button>
+      <button onclick="addNum('2')">2</button>
+      <button onclick="addNum('3')">3</button>
+      <button onclick="addNum('4')">4</button>
+      <button onclick="addNum('5')">5</button>
+      <button onclick="addNum('6')">6</button>
+      <button onclick="addNum('7')">7</button>
+      <button onclick="addNum('8')">8</button>
+      <button onclick="addNum('9')">9</button>
+      <button onclick="delNum()">⌫</button>
+      <button onclick="addNum('0')">0</button>
+      <button onclick="checkPass()">✔</button>
+    </div>
+    <p id="error" style="display:none;">หมดสิทธิ์แล้วนะ 💔</p>
+  </div>
+</div>
+
+<div class="glow g1"></div>
+<div class="glow g2"></div>
+<div class="bg" id="bg"></div>
+
+<div class="main" id="main">
+  <div class="card">
+    <div class="photo-wrap">
+      <div class="photo"><img src="main.jpg"></div>
+    </div>
+    <h2>Happy Anniversary</h2>
+    <div class="names">เอิร์ท 🤍 น้องโอปอ</div>
+    <div class="badge">1Y • 08/02/25</div>
+    <div id="loveTime"></div>
+    <div class="message">เค้ารักเธอนะคับเด็กก จะรักตลอดไปเลยย เลิกกันเค้าก็จะร้ากกกก 💙</div>
+  </div>
+</div>
+
+<script>
+const PASSWORD="080225";
+let inputPass="",tried=false;
+function playBeep(){beep.currentTime=0;beep.play();}
+function goPassword(){playBeep();openPage.classList.remove("show");passwordPage.classList.add("show");}
+function addNum(n){
+  if(tried||inputPass.length>=6)return;
+  playBeep();inputPass+=n;updateDots();
+}
+function delNum(){
+  if(tried)return;
+  playBeep();inputPass=inputPass.slice(0,-1);updateDots();
+}
+function updateDots(){
+  let d="";
+  for(let i=0;i<inputPass.length;i++)d+="● ";
+  for(let i=inputPass.length;i<6;i++)d+="○ ";
+  passDisplay.innerText=d;
+}
+function checkPass(){
+  if(tried)return;
+  playBeep();tried=true;
+  if(inputPass===PASSWORD){
+    passwordPage.classList.remove("show");
+    main.classList.add("show");
+  }else{
+    error.style.display="block";
+    document.querySelector(".keypad").style.pointerEvents="none";
+    document.querySelector(".keypad").style.opacity=.4;
+  }
+}
+function updateLoveTime(){
+  const start=new Date(2025,1,8,7,40,0);
+  const now=new Date();
+  let d=Math.floor((now-start)/1000);
+  const day=Math.floor(d/86400);d%=86400;
+  const h=Math.floor(d/3600);d%=3600;
+  const m=Math.floor(d/60);
+  const s=d%60;
+  loveTime.innerHTML=`${day} วัน ${h} ชม ${m} นาที ${s} วิ`;
+}
+setInterval(updateLoveTime,1000);updateLoveTime();
+
+const imgs=["pic1.jpg","pic2.jpg","pic3.jpg","pic4.jpg","pic5.jpg","pic6.jpg"];
+setInterval(()=>{
+  const i=document.createElement("img");
+  i.src=imgs[Math.floor(Math.random()*imgs.length)];
+  i.className="float-img";
+  i.style.left=Math.random()*100+"vw";
+  i.style.animationDuration=(12+Math.random()*6)+"s";
+  bg.appendChild(i);
+  setTimeout(()=>i.remove(),22000);
+},400);
+
+const icons=["🤍","💙","✨","⭐","🌸","🌼"];
+setInterval(()=>{
+  const f=document.createElement("div");
+  f.className="floating";
+  f.innerText=icons[Math.floor(Math.random()*icons.length)];
+  f.style.left=Math.random()*100+"vw";
+  f.style.animationDuration=(11+Math.random()*6)+"s";
+  bg.appendChild(f);
+  setTimeout(()=>f.remove(),20000);
+},650);
+</script>
+
+</body>
+</html>
